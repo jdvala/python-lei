@@ -169,7 +169,7 @@ def test_search_lei(lei_search_response):
     possible_lei = SearchLEI()
     with patch.object(SearchLEI, "_request_api", return_value=lei_search_response):
         raw_output = possible_lei.search_lei("CleanTech")
-    
+
     assert raw_output == [
         {"LegalName": "Cleantech Benelux SPRL", "LEI": "549300DON6QM36Z6CQ75"},
         {"LegalName": "CLEANTECH EUROPE I (A) LP", "LEI": "2138006HK4WI7O5AZZ55"},

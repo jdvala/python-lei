@@ -54,9 +54,11 @@ class Download:
         logger.info("The file could be over 50 Mb.")
         # TODO: Add progress bar
         zipped_content = zipfile.ZipFile(io.BytesIO(response.content))
-        # TODO: Remove this 
+        # TODO: Remove this
         if _is_actions:
-            zipped_content.extractall('/home/runner/work/python-lei/python-lei/resources')
+            zipped_content.extractall(
+                "/home/runner/work/python-lei/python-lei/resources"
+            )
         else:
             zipped_content.extractall(RESOURCE_DIR)
             logger.info(f"Extraction complete in {RESOURCE_DIR}")

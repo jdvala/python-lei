@@ -1,0 +1,38 @@
+name: Python LEI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.7
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.7
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements/ci.txt
+        pip install -e .
+    - name: Lint
+      run: make lint
+    - name: Download Data
+      run: python -c "from python_lei.utils import Download; Download(_is_actions=True)"
+
+    - name: Test
+      run: python -m pytest tests/
+
+    - name: Codecov
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      run: |
+        pip install codecov
+        codecov

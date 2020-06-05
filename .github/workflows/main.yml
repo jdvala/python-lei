@@ -22,8 +22,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements/ci.txt
         pip install -e .
-    - name: Lint
-      run: make lint
     - name: Download Data
       run: python -c "from python_lei.utils import Download; Download(_is_actions=True)"
 

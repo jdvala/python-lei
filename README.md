@@ -1,11 +1,9 @@
 # python-lei
 
 [![codecov](https://codecov.io/gh/jdvala/python-lei/branch/master/graph/badge.svg)](https://codecov.io/gh/jdvala/python-lei)
-<<<<<<< HEAD
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
-=======
 ![Python LEI](https://github.com/jdvala/python-lei/workflows/Python%20LEI/badge.svg)
->>>>>>> b9bef4aaba9eefd3bfb8bcfb116b007db8a218f8
+
 
 This project is wraper for Leilex, legal entity identifier API.  
 

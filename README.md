@@ -1,5 +1,7 @@
 # python-lei
 
+[![codecov](https://codecov.io/gh/jdvala/python-lei/branch/master/graph/badge.svg)](https://codecov.io/gh/jdvala/python-lei)
+
 This project is wraper for Leilex, legal entity identifier API.  
 
 ## Dependencies

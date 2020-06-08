@@ -5,7 +5,7 @@
 ![Python LEI](https://github.com/jdvala/python-lei/workflows/Python%20LEI/badge.svg)
 
 
-This project is wraper for Leilex, legal entity identifier API.  
+This project is wraper for Leilex, legal entity identifier API. Includes ISIN-LEI conversion. Search LEI number using company name. 
 
 ## Dependencies
 

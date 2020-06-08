@@ -63,6 +63,28 @@ class LEIParser:
         self.lei_reporting_exception_1_category = []
         self.lei_reporting_exception_2_lei = []
         self.lei_reporting_exception_2_category = []
+        self.lei_relationships_1_parent_lei = []
+        self.lei_relationships_1_parent_relationship_type = []
+        self.lei_relationships_1_parent_relationship_status = []
+        self.lei_relationships_1_parent_initial_registration_date = []
+        self.lei_relationships_1_parent_last_updated = []
+        self.lei_relationships_1_parent_registration_status = []
+        self.lei_relationships_1_parent_next_renewal_date = []
+        self.lei_relationships_1_parent_managing_LOU = []
+        self.lei_relationships_1_parent_validation_sources = []
+        self.lei_relationships_1_parent_validation_documents = []
+        self.lei_relationships_1_parent_validation_reference = []
+        self.lei_relationships_2_parent_lei = []
+        self.lei_relationships_2_parent_relationship_type = []
+        self.lei_relationships_2_parent_relationship_status = []
+        self.lei_relationships_2_parent_initial_registration_date = []
+        self.lei_relationships_2_parent_last_updated = []
+        self.lei_relationships_2_parent_registration_status = []
+        self.lei_relationships_2_parent_next_renewal_date = []
+        self.lei_relationships_2_parent_managing_LOU = []
+        self.lei_relationships_2_parent_validation_sources = []
+        self.lei_relationships_2_parent_validation_documents = []
+        self.lei_relationships_2_parent_validation_reference = []
 
         if not lei_responses:
             raise IndexError("No LEI found")
@@ -200,22 +222,159 @@ class LEIParser:
                     lei_response["records"][0].get("OtherNames")[0].get("NameType")
                 )
             else:
-                self.lei_other_name_name.append("")
-                self.lei_other_name_language.append("")
-                self.lei_other_name_type.append("")
-            self.lei_reporting_exception_1_lei.append(
-                lei_response["records"][0].get("ReportingExceptions")[0].get("LEI")
-            )
-            self.lei_reporting_exception_1_category.append(
-                lei_response["records"][0]
-                .get("ReportingExceptions")[0]
-                .get("ExceptionCategory")
-            )
-            self.lei_reporting_exception_2_lei.append(
-                lei_response["records"][0].get("ReportingExceptions")[1].get("LEI")
-            )
-            self.lei_reporting_exception_2_category.append(
-                lei_response["records"][0]
-                .get("ReportingExceptions")[1]
-                .get("ExceptionCategory")
-            )
+                self.lei_other_name_name.append(None)
+                self.lei_other_name_language.append(None)
+                self.lei_other_name_type.append(None)
+
+            if lei_response["records"][0].get("ReportingExceptions"):
+                self.lei_reporting_exception_1_lei.append(
+                    lei_response["records"][0].get("ReportingExceptions")[0].get("LEI")
+                )
+                self.lei_reporting_exception_1_category.append(
+                    lei_response["records"][0]
+                    .get("ReportingExceptions")[0]
+                    .get("ExceptionCategory")
+                )
+                self.lei_reporting_exception_2_lei.append(
+                    lei_response["records"][0].get("ReportingExceptions")[1].get("LEI")
+                )
+                self.lei_reporting_exception_2_category.append(
+                    lei_response["records"][0]
+                    .get("ReportingExceptions")[1]
+                    .get("ExceptionCategory")
+                )
+            else:
+                self.lei_reporting_exception_1_lei.append(None)
+                self.lei_reporting_exception_1_category.append(None)
+                self.lei_reporting_exception_2_lei.append(None)
+                self.lei_reporting_exception_2_category.append(None)
+            if lei_response["records"][0].get("Relationships"):
+                self.lei_relationships_1_parent_lei.append(
+                    lei_response["records"][0].get("Relationships")[0].get("ParentLEI")
+                )
+                self.lei_relationships_1_parent_relationship_type.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RelationshipType")
+                )
+                self.lei_relationships_1_parent_relationship_status.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RelationshipStatus")
+                )
+                self.lei_relationships_1_parent_initial_registration_date.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("InitialRegistrationDate")
+                )
+                self.lei_relationships_1_parent_last_updated.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("LastUpdateDate")
+                )
+                self.lei_relationships_1_parent_registration_status.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RegistrationStatus")
+                )
+                self.lei_relationships_1_parent_next_renewal_date.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("NextRenewalDate")
+                )
+                self.lei_relationships_1_parent_managing_LOU.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ManagingLou")
+                )
+                self.lei_relationships_1_parent_validation_sources.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationSources")
+                )
+                self.lei_relationships_1_parent_validation_documents.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationDocuments")
+                )
+                self.lei_relationships_1_parent_validation_reference.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationReference")
+                )
+                self.lei_relationships_2_parent_lei.append(
+                    lei_response["records"][0].get("Relationships")[0].get("ParentLEI")
+                )
+                self.lei_relationships_2_parent_relationship_type.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RelationshipType")
+                )
+                self.lei_relationships_2_parent_relationship_status.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RelationshipStatus")
+                )
+                self.lei_relationships_2_parent_initial_registration_date.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("InitialRegistrationDate")
+                )
+                self.lei_relationships_2_parent_last_updated.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("LastUpdateDate")
+                )
+                self.lei_relationships_2_parent_registration_status.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("RegistrationStatus")
+                )
+                self.lei_relationships_2_parent_next_renewal_date.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("NextRenewalDate")
+                )
+                self.lei_relationships_2_parent_managing_LOU.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ManagingLou")
+                )
+                self.lei_relationships_2_parent_validation_sources.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationSources")
+                )
+                self.lei_relationships_2_parent_validation_documents.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationDocuments")
+                )
+                self.lei_relationships_2_parent_validation_reference.append(
+                    lei_response["records"][0]
+                    .get("Relationships")[0]
+                    .get("ValidationReference")
+                )
+            else:
+                self.lei_relationships_1_parent_lei.append(None)
+                self.lei_relationships_1_parent_relationship_type.append(None)
+                self.lei_relationships_1_parent_relationship_status.append(None)
+                self.lei_relationships_1_parent_initial_registration_date.append(None)
+                self.lei_relationships_1_parent_last_updated.append(None)
+                self.lei_relationships_1_parent_registration_status.append(None)
+                self.lei_relationships_1_parent_next_renewal_date.append(None)
+                self.lei_relationships_1_parent_managing_LOU.append(None)
+                self.lei_relationships_1_parent_validation_sources.append(None)
+                self.lei_relationships_1_parent_validation_documents.append(None)
+                self.lei_relationships_1_parent_validation_reference.append(None)
+                self.lei_relationships_2_parent_lei.append(None)
+                self.lei_relationships_2_parent_relationship_type.append(None)
+                self.lei_relationships_2_parent_relationship_status.append(None)
+                self.lei_relationships_2_parent_initial_registration_date.append(None)
+                self.lei_relationships_2_parent_last_updated.append(None)
+                self.lei_relationships_2_parent_registration_status.append(None)
+                self.lei_relationships_2_parent_next_renewal_date.append(None)
+                self.lei_relationships_2_parent_managing_LOU.append(None)
+                self.lei_relationships_2_parent_validation_sources.append(None)
+                self.lei_relationships_2_parent_validation_documents.append(None)
+                self.lei_relationships_2_parent_validation_reference.append(None)

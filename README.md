@@ -3,6 +3,7 @@
 [![codecov](https://codecov.io/gh/jdvala/python-lei/branch/master/graph/badge.svg)](https://codecov.io/gh/jdvala/python-lei)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 ![Python LEI](https://github.com/jdvala/python-lei/workflows/Python%20LEI/badge.svg)
+[![pypi Version](https://img.shields.io/pypi/v/python-lei.svg?logo=pypi&logoColor=white)](https://pypi.org/project/python-lei/)
 
 
 This project is wraper for Leilex, legal entity identifier API. Includes ISIN-LEI conversion. Search LEI number using company name. 

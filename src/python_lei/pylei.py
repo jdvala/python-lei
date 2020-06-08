@@ -68,10 +68,10 @@ class pyLEI:
                     "Successor_Entity": lei_results.lei_successor_entities,
                     "InitialRegistrationDate": [
                         parse(date)
-                        for date in lei_results.lei_initial_registration_dates
+                        if date else None for date in lei_results.lei_initial_registration_dates
                     ],
                     "Last_Update_Date": [
-                        parse(date) for date in lei_results.lei_last_update_dates
+                        parse(date) if date else None for date in lei_results.lei_last_update_dates
                     ],
                     "Registration_Status": lei_results.lei_registration_status,
                     "Next_Renewal_Date": lei_results.lei_next_renewal_dates,
@@ -104,6 +104,46 @@ class pyLEI:
                     "Other_Name": lei_results.lei_other_name_name,
                     "Other_Name_Language": lei_results.lei_other_name_language,
                     "Other_Name_Type": lei_results.lei_other_name_type,
+                    "Relationship_1_Patrent_LEI": lei_results.lei_relationships_1_parent_lei,
+                    "Relationship_1_Relationship_Type": lei_results.lei_relationships_1_parent_relationship_type,
+                    "Relationship_1_Relationship_Status": lei_results.lei_relationships_1_parent_relationship_status,
+                    "Relationship_1_Initial_Registration_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_1_parent_initial_registration_date
+                    ],
+                    "Relationship_1_Last_Update_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_1_parent_last_updated
+                    ],
+                    "Relationship_1_Registration_Status": lei_results.lei_relationships_1_parent_registration_status,
+                    "Relationship_1_Next_Renewal_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_1_parent_next_renewal_date
+                    ],
+                    "Relationship_1_Managing_Lou": lei_results.lei_relationships_1_parent_managing_LOU,
+                    "Relationship_1_Validation_Sources": lei_results.lei_relationships_1_parent_validation_sources,
+                    "Relationship_1_Validation_Documents": lei_results.lei_relationships_1_parent_validation_documents,
+                    "Relationship_1_Validation_Reference": lei_results.lei_relationships_1_parent_validation_reference,
+                    "Relationship_2_Patrent_LEI": lei_results.lei_relationships_2_parent_lei,
+                    "Relationship_2_Relationship_Type": lei_results.lei_relationships_2_parent_relationship_type,
+                    "Relationship_2_Relationship_Status": lei_results.lei_relationships_2_parent_relationship_status,
+                    "Relationship_2_Initial_Registration_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_2_parent_initial_registration_date
+                    ],
+                    "Relationship_2_Last_Update_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_2_parent_last_updated
+                    ],
+                    "Relationship_2_Registration_Status": lei_results.lei_relationships_2_parent_registration_status,
+                    "Relationship_2_Next_Renewal_Date": [
+                        parse(date)
+                        if date else None for date in lei_results.lei_relationships_2_parent_next_renewal_date
+                    ],
+                    "Relationship_2_Managing_Lou": lei_results.lei_relationships_2_parent_managing_LOU,
+                    "Relationship_2_Validation_Sources": lei_results.lei_relationships_2_parent_validation_sources,
+                    "Relationship_2_Validation_Documents": lei_results.lei_relationships_2_parent_validation_documents,
+                    "Relationship_2_Validation_Reference": lei_results.lei_relationships_2_parent_validation_reference,
                     "Reporting_Exceptions_1_LEI": lei_results.lei_reporting_exception_1_lei,
                     "Reporting_Exceptions_1_Category": lei_results.lei_reporting_exception_1_category,
                     "Reporting_Exceptions_2_LEI": lei_results.lei_reporting_exception_2_lei,

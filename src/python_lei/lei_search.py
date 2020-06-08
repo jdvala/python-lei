@@ -36,6 +36,7 @@ class SearchLEI:
 
         if not raw_output:
             logger.info(f"No LEI found for company name {company_name}")
+            return
 
         if not show_table:
             return raw_output

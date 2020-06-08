@@ -28,7 +28,7 @@ def read_readme(path):
 setup(
     name="python-lei",
     description="Python wraper for Legal Entity Identification API and ISIN to LEI and vice versa conversion.",
-    version="0.1",
+    version="0.0.2",
     long_description=read_readme(readme_path),
     long_description_content_type="text/markdown",
     setup_requires=["setuptools_scm"],
@@ -53,6 +53,6 @@ setup(
         "Topic :: Software Development :: Libraries :: Python Modules",
         "Topic :: Utilities",
     ],
-    keywords="LEI python-lei Legal Entity Identification ISIN Finance",
+    keywords="LEI python-lei Legal-Entity-Identification ISIN Finance Business LEI-code Leilex",
     license="MIT",
 )

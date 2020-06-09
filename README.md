@@ -17,6 +17,11 @@ This project is wraper for Leilex, legal entity identifier API. Includes ISIN-LE
 3. [dateutils](https://dateutil.readthedocs.io/en/stable/)
 4. [pandas](https://pandas.pydata.org/)
 
+## Installation
+```bash
+pip install python-lei
+```
+
 ## Usage
 
 After installing the module, first step is to download the data for ISIN and LEI mappings

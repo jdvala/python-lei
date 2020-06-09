@@ -1,5 +1,6 @@
 # python-lei
 
+[![python](https://img.shields.io/pypi/pyversions/python-lei?logo=python&logoColor=white&style=plastic)](https://www.python.org)
 [![codecov](https://codecov.io/gh/jdvala/python-lei/branch/master/graph/badge.svg)](https://codecov.io/gh/jdvala/python-lei)
 [![black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/python/black)
 ![Python LEI](https://github.com/jdvala/python-lei/workflows/Python%20LEI/badge.svg)

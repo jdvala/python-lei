@@ -1,4 +1,3 @@
-import io
 import os.path as path
 
 from setuptools import find_packages, setup
@@ -12,7 +11,7 @@ readme_path = path.join(here, "README.md")
 
 def read_requirements(path):
     try:
-        with io.open(path, mode="rt", encoding="utf-8") as fp:
+        with open(path, mode="rt", encoding="utf-8") as fp:
             return list(
                 filter(bool, [line.split("#")[0].strip() for line in fp])  # noqa:C407
             )
@@ -21,7 +20,7 @@ def read_requirements(path):
 
 
 def read_readme(path):
-    with io.open(path, mode="rt", encoding="utf-8") as fp:
+    with open(path, mode="rt", encoding="utf-8") as fp:
         return fp.read()
 
 
@@ -31,7 +30,6 @@ setup(
     version="0.1.1",
     long_description=read_readme(readme_path),
     long_description_content_type="text/markdown",
-    setup_requires=["setuptools_scm"],
     install_requires=read_requirements(requirements_path),
     include_package_data=True,
     package_data={},

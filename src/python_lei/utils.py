@@ -8,6 +8,7 @@ from pathlib import Path
 
 import pandas as pd
 import requests
+from bs4 import BeautifulSoup
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO)
@@ -30,8 +31,7 @@ class Download:
         Args:
             _is_actions (bool): For setting path of downloaded resources on Github Actions
         """
-        self.data_url = f"https://isinmapping.gleif.org/file-by-date/{TODAY}"
-
+        self.data_url = "https://www.gleif.org/en/lei-data/lei-mapping/download-isin-to-lei-relationship-files"        
         self._download(_is_actions)
 
     def _download(self, _is_actions):
@@ -42,8 +42,13 @@ class Download:
             logger.info(f"No resources directory found, creating resources directory.")
             os.mkdir(RESOURCE_DIR)
 
+        download_link = self._scrape_isin_file()
+
+        if not download_link:
+            raise ValueError("Downloading of isin file not available.")
+
         try:
-            response = requests.get(self.data_url)
+            response = requests.get(download_link)
         except requests.exceptions as err:
             logger.error(
                 "Connection Error, Unable to download data at this time. Please check you have working internet connection or try again later."
@@ -52,9 +57,7 @@ class Download:
             logger.error("No response from GLEIF server.")
 
         logger.info("The file could be over 50 Mb.")
-        # TODO: Add progress bar
         zipped_content = zipfile.ZipFile(io.BytesIO(response.content))
-        # TODO: Remove this
         if _is_actions:
             zipped_content.extractall(
                 "/home/runner/work/python-lei/python-lei/resources"
@@ -62,9 +65,23 @@ class Download:
         else:
             zipped_content.extractall(RESOURCE_DIR)
             logger.info(f"Extraction complete in {RESOURCE_DIR}")
+    
+    def _scrape_isin_file(self):
+        """
+        Scrape the data.
+        """
+        try:
+            response = requests.get(self.data_url)
+            response.raise_for_status()
+            soup = BeautifulSoup(response.text)
+        
+            # find all the tr and td and get to the href
+            download_link = soup.find_all("tr")[1].find_all("td")[1].find("a")["href"]
+            return download_link
 
-    # TODO: Covert the dataframe to parquet and use it.
-
+        except requests.ConnectionError:
+            logger.error(f"Error connecting to {self.data_url}")
+       
 
 class Update:
     """
@@ -83,12 +100,12 @@ class Update:
             logger.info(
                 "Resource directory not found or LEI ISIN mappings not found. Downloading now."
             )
-            download = Download()
+            Download()
 
         if os.listdir(RESOURCE_DIR) != []:
             shutil.rmtree(RESOURCE_DIR)
             logger.info(f"Downloading Data in {RESOURCE_DIR}")
-            download = Download()
+            Download()
 
 
 def load_data():

@@ -1,9 +1,8 @@
-from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 import pandas as pd
 import pytest
-from python_lei.exceptions import InvalidISIN, InvalidLEI
+from python_lei.exceptions import InvalidLEI
 from python_lei.pylei import pyLEI
 from python_lei.utils import PROJECT_ROOT
 

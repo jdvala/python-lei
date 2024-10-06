@@ -1,9 +1,6 @@
-from pathlib import Path
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
-import pandas as pd
 import pytest
-from python_lei.exceptions import NotFound
 from python_lei.lei_search import SearchLEI
 
 

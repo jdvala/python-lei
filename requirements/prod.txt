@@ -1,3 +1,4 @@
 pandas
 texttable
 requests
+bs4

@@ -1,5 +1,3 @@
-import pandas as pd
-import requests
 from python_lei.exceptions import InvalidISIN, InvalidLEI
 from python_lei.utils import load_data
 
